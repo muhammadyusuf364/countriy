@@ -1,38 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@100;200;300;400;500;600;800;900&display=swap");
+
 /* CUSTOM-PROPS */
 :root {
   --loader-color: #000;
+  --shadov: 0px 2px 4px 0px rgba(0, 0, 0, 0.06);
+  --white: #fff;
+  --header-bg: #fff;
+  --black: #000;
+  --bacgroun: #fafafa;
+  --input-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.05);
+  --dropdown: 0px 2px 9px 0px rgba(0, 0, 0, 0.05);
+  --flags: 0px 0px 7px 2px rgba(0, 0, 0, 0.03);
+  --black-400: #111517;
+  --inp: #000;
+}
+.dark {
+  --bacgroun: #202c36;
+  --white: #2b3844;
+  --header-bg: #2b3844;
+  --black-400: #fff;
+  --black: #fff;
+  --inp: #ffff;
 }
 
 /* FONT-FACE  */
 
 /* LOADER */
-.loader-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  background-color: #fff;
-  position: fixed;
-  z-index: 999;
-  transition: opacity 0.2s ease;
-}
-
-.loader-wrapper--none {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.loader {
-  width: 48px;
-  height: 48px;
-  border: 5px dotted var(--loader-color);
-  border-radius: 50%;
-  display: inline-block;
-  position: relative;
-  box-sizing: border-box;
-  animation: rotation 2s linear infinite;
-}
 
 @keyframes rotation {
   0% {
@@ -57,16 +54,15 @@ html {
 }
 
 body {
-  display: flex;
-  flex-direction: column;
   height: 100%;
-  background-color: #fff;
+  background-color: var(--bacgroun);
   color: #222;
-  font-family: "Arial", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
   font-size: 16px;
   line-height: 1.5;
   padding: 0;
   margin: 0;
+  transition: 0.3s;
 }
 
 .root {
@@ -81,23 +77,16 @@ img {
   height: auto;
 }
 
-
 /* FOCUS-STYLES  */
-*:focus {
-  outline: 3px dashed black;
-  outline-offset: 3px;
-}
 
 /* CONTAINER  */
 .container {
-  max-width: 1200px;
+  max-width: 1600px;
   width: 100%;
-  padding-left: 50px;
-  padding-right: 50px;
-  margin-left: auto;
-  margin-right: auto;
+  padding-left: 80px;
+  padding-right: 80px;
+  margin: 0 auto;
 }
-
 
 /* VISUALLY-HIDDEN  */
 .visually-hidden {
@@ -111,8 +100,250 @@ img {
   overflow: hidden;
 }
 
-
 /* MAIN-CONTENT  */
 .main-content {
   flex-grow: 1;
 }
+
+.header {
+  width: 100%;
+  margin: 0 auto;
+  background: var(--header-bg);
+  box-shadow: var(--shadov);
+  margin-bottom: 50px;
+}
+.header__box {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  justify-content: space-between;
+  padding: 20px 81px;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.header-title {
+  color: var(--black-400);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 800;
+}
+.header-dark {
+  color: var(--black-400);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  cursor: pointer;
+}
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.hero-input {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.input {
+  width: 100%;
+  max-width: 480px;
+  border: none;
+  outline: none;
+  box-shadow: var(--input-shadow);
+  color: var(--inp);
+  background: var(--white);
+  padding: 18px 80px 18px 70px;
+  border-radius: 5px;
+}
+.input::placeholder {
+  color: var(--inp);
+}
+.input-img {
+  position: absolute;
+  left: 30px;
+}
+
+.drop {
+  display: flex;
+  align-items: center;
+}
+.arrow {
+  position: absolute;
+  left: 158px;
+}
+.dropbtn {
+  background-color: var(--white);
+  border-radius: 5px;
+  box-shadow: var(--dropdown);
+  color: var(--black);
+  padding: 18px 50px 18px 24px;
+  font-size: 16px;
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  border-radius: 5px;
+  background-color: var(--white);
+  box-shadow: var(--dropdown);
+  min-width: 180px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.dropdown-content p {
+  color: var(--black);
+  padding: 12px 16px;
+  margin: 0;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content p:hover {
+  cursor: pointer;
+  background-color: #645e5e;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.flags {
+  max-width: 268px;
+  border-radius: 5px;
+  background: var(--white);
+  box-shadow: var(--flags);
+}
+.boxs {
+  padding: 5px 90px 46px 24px;
+}
+
+.boxs-title {
+  color: var(--black-400);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 26px;
+}
+.boxs-popular {
+  color: var(--black-400);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+  margin-bottom: 5px;
+}
+.number {
+  color: var(--black-400);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 16px;
+}
+.boxs-region {
+  color: var(--black-400);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 16px;
+  margin-bottom: 5px;
+}
+.europa {
+  color: var(--black-400);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 16px;
+}
+.boxs-capital {
+  color: var(--black-400);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 16px;
+}
+.berlin {
+  color: var(--black-400);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 16px;
+}
+
+.wrap {
+  display: grid;
+  gap: 70px;
+  grid-template-columns: repeat(auto-fit, minmax(264px, 1fr));
+}
+.img_wrap {
+  height: 160px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.img_wrap img {
+  height: 100%;
+  width: 100%;
+  object-position: center;
+}
+
+.pagi {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media only screen and (max-width: 705px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 530px) {
+  .header-title{
+    font-size: 20px;
+  }
+  .header-dark{
+    font-size: 14px;
+  }
+  .header__box{
+    justify-content: center;
+    display: flex;
+    gap: 20px;
+    padding: 20px 20px;
+  }
+}
+@media only screen and (max-width: 420px) {
+  .container {
+    padding-left: 1px;
+    padding-right: 1px;
+  }
+  .header-title{
+    font-size: 15px;
+  }
+  .header-dark{
+    font-size: 12px;
+  }
+  .header__box{
+    justify-content: center;
+    display: flex;
+    gap: 20px;
+  }
+}
+
